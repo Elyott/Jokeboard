@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import NavBar from './NavBar.jsx';
-import JokeBook from './JokeBook';
+import JokeBook from './JokeBook.jsx';
 
 class App extends Component {
   constructor(){
