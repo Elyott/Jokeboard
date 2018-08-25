@@ -6,10 +6,10 @@ class NavBar extends Component {
       <nav className="navbar">
         <a href="/" className="navbar-brand">JOKERNAUT</a>
         <div className="buttons">
-          <div className="home_button">
+          <div className="nav_button">
             <a>Add Joke</a>
           </div>
-          <div className="notebook_button">
+          <div className="nav_button">
             <a>Notebook</a>
           </div>
         </div>
