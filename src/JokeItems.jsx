@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import JokeItem from './JokeItem.jsx';
 
 class JokeItems extends Component {
   constructor() {
@@ -7,11 +8,11 @@ class JokeItems extends Component {
   }
 
   render() {
-    return (
-      <div className="jokes">
-        You Have No Jokes Yet
-      </div>
-    );
+    return <div className="jokeitems">
+        <JokeItem />
+        <JokeItem />
+        <JokeItem />
+      </div>;
   }
 }
 

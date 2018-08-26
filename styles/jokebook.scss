@@ -7,12 +7,20 @@
   text-align: center;
 
   .title {
-    margin: 1vh;
+    padding: 1vh;
     font-size: 1.2em;
   }
 
-  .jokes {
+  .jokeitems {
     min-height: 30vh;
+  }
+
+  .joke {
+    padding: 1vh;
+    color: #c04c4c;
+  }
+  .joke:hover {
+    background-color: lightgrey;
   }
 
  .add_joke_btn {
