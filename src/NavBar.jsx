@@ -10,7 +10,7 @@ class NavBar extends Component {
             <a>Add Joke</a>
           </div>
           <div className="nav_button">
-            <a>Notebook</a>
+            <a>Jokebook</a>
           </div>
         </div>
       </nav>
