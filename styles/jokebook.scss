@@ -1,8 +1,32 @@
 .jokebook_container {
-  width: 60vw;
-  height: 80vh;
+  width: 40vw;
   background-color: white;
   margin: auto;
   margin-top: 10vh;
   border: 2px solid lightgrey;
+  text-align: center;
+
+  .title {
+    margin: 1vh;
+    font-size: 1.2em;
+  }
+
+  .jokes {
+    min-height: 30vh;
+  }
+
+ .add_joke_btn {
+   color: #35a094;
+   font-weight: 900;
+   font-size: 1.2em;
+   height: 60px;
+   text-decoration: none;
+   width: 100%;
+   border-radius: 0;
+ }
+
+ .add_joke_btn:hover {
+   color: #2d9185;
+   background: #f1f1f1;
+ }
 }
