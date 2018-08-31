@@ -3,12 +3,16 @@
   background-color: white;
   margin: auto;
   margin-top: 10vh;
-  border: 2px solid lightgrey;
+  // padding: 2vh;
+  // border: 2px solid lightgrey;
   text-align: center;
+  border-radius: 1vh;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
   .title {
     padding: 1vh;
-    font-size: 1.2em;
+    font-weight: 900;
+    font-size: 1.4em;
   }
 
   .jokeitems {
@@ -16,17 +20,32 @@
   }
 
   .joke {
-    padding: 1vh;
+    display: block;
+    min-height: 45px;
+    text-align: left;
+    padding: 1vh 4vh;
     color: #c04c4c;
+
+    .joke_name {
+      float: left;
+    }
+    .edit {
+      display: none;
+      float: right;
+    }
   }
   .joke:hover {
-    background-color: lightgrey;
+    background-color: #f1f1f1;
+
+    .edit{
+      display: initial;
+    }
   }
 
  .add_joke_btn {
    color: #35a094;
    font-weight: 900;
-   font-size: 1.2em;
+   font-size: 1.1em;
    height: 60px;
    text-decoration: none;
    width: 100%;
