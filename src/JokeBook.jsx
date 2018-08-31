@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import JokeItems from './JokeItems.jsx';
+import JokeList from './JokeList.jsx';
 
 class JokeBook extends Component {
   constructor() {
@@ -9,8 +9,8 @@ class JokeBook extends Component {
 
   render() {
     return <div className="jokebook_container">
-        <div className="title">JokeBook</div>
-        <JokeItems />
+        <div className="title">Joke Book</div>
+        <JokeList />
         <button className="add_joke_btn">Add New Joke</button>
       </div>;
   }
