@@ -6,11 +6,10 @@ class JokeItem extends Component {
   }
 
   render() {
-    return (
-      <div className="joke">
-        Joke Name
-      </div>
-    );
+    return <div className="joke">
+        <div className="joke_name">{this.props.joke.title}</div>
+        <div className="edit">Edit</div>
+      </div>;
   }
 }
 
