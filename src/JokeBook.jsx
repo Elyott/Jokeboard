@@ -10,10 +10,10 @@ class JokeBook extends Component {
   render() {
     return (
       <div>
-        <div className="jokebook_container">
-          <div className="title">Joke Book</div>
+        <div className='jokebook_container'>
+          <div className='title'>Joke Book</div>
           <JokeList />
-          <button className="add_joke_btn">Add New Joke</button>
+          <button className='add_joke_btn'>Add New Joke</button>
         </div>
         <JokeDetail />
       </div>
