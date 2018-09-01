@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 
-class JokeItem extends Component {
-  constructor() {
-    super();
-  }
-
+export default class JokeItem extends Component {
   render() {
-    return <div className="joke">
+    return(
+      <div className="joke" onClick={() => this.props.selectJoke(this.props.joke)}>
         <div className="joke_name">{this.props.joke.title}</div>
         <div className="edit">Edit</div>
-      </div>;
+      </div>
+    );
   }
 }
-
-export default JokeItem;
