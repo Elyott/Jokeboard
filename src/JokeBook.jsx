@@ -9,13 +9,17 @@ class JokeBook extends Component {
 
   render() {
     return (
-      <div>
-        <div className='jokebook_container'>
-          <div className='title'>Joke Book</div>
-          <JokeList />
-          <button className='add_joke_btn'>Add New Joke</button>
+      <div className='jokebook_container'>
+        <div className='title'>Joke Book</div>
+        <div className='container' >
+          <div className='item'>
+            <JokeList />
+            <button className='add_joke_btn'>Add New Joke</button>
+          </div>
+          <div className='item' >
+            <JokeDetail />
+          </div>
         </div>
-        <JokeDetail />
       </div>
     );
   }
