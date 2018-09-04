@@ -12,7 +12,7 @@ class JokeList extends Component {
   }
 
   render() {
-    return <div className='jokeitems'>
+    return <div className='jokeitems item'>
         {this.renderJokeList()}
       </div>;
   }
