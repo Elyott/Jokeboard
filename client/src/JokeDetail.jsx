@@ -34,7 +34,7 @@ class JokeDetail extends Component {
         <div>Duration: {this.props.joke && this.props.joke.duration}</div>
         <div>Rating: {this.props.joke && this.props.joke.rating}</div>
         <div>{this.props.joke && this.props.joke.content}</div> */}
-      <input id='joke_content' onChange={this.onInputChange} value={this.state.jokeContent}/>
+      {/* <input id='joke_content' onChange={this.onInputChange} value={this.state.jokeContent}/> */}
       </div>;
   }
 }
