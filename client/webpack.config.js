@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
+  entry: [ 'babel-polyfill',
     'webpack-dev-server/client?http://localhost:3000',
     './src/index.jsx'
   ],
