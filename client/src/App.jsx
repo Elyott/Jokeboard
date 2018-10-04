@@ -8,17 +8,19 @@ class App extends Component {
   constructor() {
     super();
 
-    this.state = { response: "" };
+    this.state = { response: [] };
   }
 
   componentDidMount() {
 
-    fetch("http://localhost:5000/api/hello")
+    fetch("http://localhost:5000/api/jokes")
       .then(results => {
+        console.log(results);
         return results.json();
       })
       .then(data => {
-        this.setState({ response: data.express });
+        console.log(data);
+        this.setState({ response: data });
       });
     // this.callApi()
     //   .then(res => this.setState({ response: res.express }))
@@ -39,7 +41,7 @@ class App extends Component {
       <div>
         <NavBar />
         <JokeBook />
-        <p className="App-intro">{this.state.response}</p>
+        <div className="App-intro">{this.state.response.map((joke) => {return <div key={joke.id}>Name: {joke.name} Content: {joke.content} </div> })}</div>
       </div>
     );
   }
