@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const routes = require('./routes');
 
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, './client')));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
