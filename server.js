@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const routes = require('./routes');
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 app.use('/api', routes);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
