@@ -1,6 +1,9 @@
 {
   "name": "joke_book_express_server",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.9.1"
+  },
   "scripts": {
     "client": "cd client && npm start",
     "server": "nodemon server.js",
@@ -12,6 +15,6 @@
     "pg": "^7.4.3"
   },
   "devDependencies": {
-    "concurrently": "^3.5.0"
+    "concurrently": "^3.6.1"
   }
 }
