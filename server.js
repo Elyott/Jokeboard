@@ -15,6 +15,6 @@ app.use('/api', routes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
-});ß
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
