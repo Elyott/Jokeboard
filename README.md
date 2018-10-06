@@ -8,6 +8,12 @@ It allows comedians to write, save, organize, rate, and estimate the duration of
 
 Jokernaut is built using Node.js. It has an Express backend and uses PostgreSQL for the database. I used knex for migrations and seeds. The frontend is built using React along with React Router and Redux. 
 
+### Future Features
+
+- [ ] Responsive for mobile phones. Making it easy to take your jokes and setlists to shows everywhere
+- [ ] Help you brainstorm topics to write jokes about
+- [ ] Help edit and remove unnecessary words from jokes
+- [ ] Have a calendar to keep track of shows
 
 ### Dependencies
 
