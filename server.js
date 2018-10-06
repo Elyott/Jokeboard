@@ -13,5 +13,8 @@ app.use(function (req, res, next) {
 //  Connect all our routes to our application
 app.use('/api', routes);
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});ß
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
