@@ -1,12 +1,12 @@
-
+const path = require('path');
 const router = require('express').Router();
 const queries = require('../db/queries');
 
-// routes.get('/', (req, res) => {
-//   res.status(200).json({
-//     message: 'Connected!'
-//   });
-// });
+router.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Connected!'
+  });
+});
 
 
 
