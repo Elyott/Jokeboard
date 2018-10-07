@@ -16,6 +16,9 @@ app.use(function (req, res, next) {
   next();
 });
 
+//  Connect all our routes to our application
+app.use('/api', routes);
+
 // if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
@@ -25,8 +28,7 @@ app.use(function (req, res, next) {
   });
 // }
 
-//  Connect all our routes to our application
-app.use('/api', routes);
+
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
