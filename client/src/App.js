@@ -4,7 +4,7 @@ import './styles/App.scss';
 
 import NavBar from './NavBar';
 // import JokeBook from './JokeBook';
-import "babel-polyfill";
+
 
 class App extends Component {
   constructor() {
