@@ -3,7 +3,7 @@ import './styles/App.scss';
 
 
 import NavBar from './NavBar';
-// import JokeBook from './JokeBook';
+import JokeBook from './JokeBook';
 
 
 class App extends Component {
@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        {/* <JokeBook /> */}
+        <JokeBook />
         <div className="App-intro">{this.state.response.map((joke) => {return <div key={joke.id}>Name: {joke.name} Content: {joke.content} </div> })}</div>
       </div>
     );
