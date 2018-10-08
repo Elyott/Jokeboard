@@ -26,3 +26,5 @@ Jokernaut is built using Node.js. It has an Express backend and uses PostgreSQL 
 * React Router
 * Knex
 * PG
+
+Created By Elyott Ryan
