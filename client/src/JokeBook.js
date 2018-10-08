@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import JokeList from './JokeList.jsx';
-import JokeDetail from './JokeDetail.jsx';
+import JokeList from './JokeList';
+import JokeDetail from './JokeDetail';
 
 class JokeBook extends Component {
 
