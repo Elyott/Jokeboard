@@ -24,8 +24,8 @@ class JokeDetail extends Component {
           <div className="col">Rating</div>
         </div>
         <div className="row">
-          <div className="col">{this.props.joke && this.props.joke.title}</div>
-          <div className="col">{this.props.joke && this.props.joke.duration}</div>
+          <div className="col">{this.props.joke && this.props.joke.name}</div>
+          <div className="col">{this.props.joke && this.props.joke.minutes} : {this.props.joke && this.props.joke.seconds} </div>
           <div className="col">{this.props.joke && this.props.joke.rating}</div>
         </div>
         <div>{this.props.joke && this.props.joke.content}</div>

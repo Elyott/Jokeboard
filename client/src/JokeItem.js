@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
   render() {
     return(
       <div className='joke' onClick={() => this.props.selectJoke(this.props.joke)}>
-        <div className='joke_name'>{this.props.joke.title}</div>
+        <div className='joke_name'>{this.props.joke.name}</div>
         {/* <div className='edit'>Edit</div> */}
       </div>
     );
