@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import JokeItem from './JokeItem';
 import { fetchJokes } from './actions/index';
 import { bindActionCreators } from 'redux';
+import _ from 'lodash';
 
 class JokeList extends Component {
     constructor() {
@@ -11,22 +12,25 @@ class JokeList extends Component {
     this.state = { response: [] };
   }
 
-    componentDidMount() {
-      fetchJokes();
-    }
+  componentDidMount() {
+    this.props.fetchJokes();
+  }
 
   renderJokeList() {
-    return this.props.jokes.map((joke) => {
+    return _.map(this.props.jokes, joke => {
       return (<JokeItem
-        key={joke.title}
+        key={joke.name}
         joke={joke} /> )
     })
   }
 
   render() {
-    return <div className='jokeitems item'>
+    return(
+      <div className='jokeitems item'>
+        <div>Jokes</div>
         {this.renderJokeList()}
-      </div>;
+      </div>
+    );
   }
 }
 
@@ -36,11 +40,11 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({
-      fetchJokes
-    },
-    dispatch
-  );
+// const mapDispatchToProps = dispatch =>
+//   bindActionCreators({
+//       fetchJokes
+//     },
+//     dispatch
+//   );
 
-export default connect(mapStateToProps, mapDispatchToProps)(JokeList);
+export default connect(mapStateToProps, { fetchJokes })(JokeList);
