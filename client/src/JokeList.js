@@ -12,21 +12,7 @@ class JokeList extends Component {
   }
 
     componentDidMount() {
-
-      fetch("http://localhost:5000/api/jokes")
-        .then(results => {
-          console.log(results);
-          return results.json();
-        })
-        .then(data => {
-          console.log(data);
-          this.setState({
-            response: data
-          });
-        });
-      // this.callApi()
-      //   .then(res => this.setState({ response: res.express }))
-      //   .catch(err => console.log(err));
+      fetchJokes();
     }
 
   renderJokeList() {
