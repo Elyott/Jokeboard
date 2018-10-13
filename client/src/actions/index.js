@@ -12,7 +12,7 @@ export function selectJoke(joke) {
 
 export function fetchJokes(){
 
-  const request = axios.get("http://localhost:5000/api/jokes")
+  const request = axios.get("/api/jokes")
 
   return {
     type: FETCH_JOKES,
