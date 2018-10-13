@@ -39,7 +39,7 @@ exports.seed = function (knex, Promise) {
         rating: 'A+',
         minutes: 1,
         seconds: 30,
-        user_id: 2,
+        user_id: 1,
       });
     });
 };
