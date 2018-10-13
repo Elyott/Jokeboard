@@ -34,16 +34,6 @@ exports.seed = function (knex, Promise) {
     }).then(function () {
       // Inserts seed entries
       return knex('jokes').insert({
-        name: 'Samurai',
-        content: 'This is a test joke about samurais',
-        rating: 'C',
-        minutes: 2,
-        seconds: 7,
-        user_id: 1,
-      });
-    }).then(function () {
-      // Inserts seed entries
-      return knex('jokes').insert({
         name: 'Coffee',
         content: 'This is a test joke about coffee',
         rating: 'A+',
