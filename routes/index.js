@@ -9,15 +9,68 @@ router.get('/', (req, res) => {
 });
 
 
-
-
-// *** GET all shows *** //
+// *** GET all jokes *** //
 router.get('/jokes', function (req, res, next) {
   queries.getAll()
     .then(function (jokes) {
       res.status(200).json(jokes);
     })
     .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** GET single joke *** //
+router.get('/jokes/:id', function (req, res, next) {
+  queries.getSingle(req.params.id)
+    .then(function (joke) {
+      res.status(200).json(joke);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** add joke *** //
+router.post('/jokes', function (req, res, next) {
+  queries.addJoke(req.body)
+    .then(function (jokeID) {
+      return queries.getSingle(jokeID);
+    })
+    .then(function (joke) {
+      res.status(200).json(joke);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** update joke *** //
+router.put('/jokes/:id', function (req, res, next) {
+  queries.updateJoke(req.params.id, req.body)
+    .then(function () {
+      return queries.getSingle(req.params.id);
+    })
+    .then(function (joke) {
+      res.status(200).json(joke);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** delete show *** //
+router.delete('/jokes/:id', function (req, res, next) {
+  queries.getSingle(req.params.id)
+    .then(function (joke) {
+      queries.deleteJoke(req.params.id)
+        .then(function () {
+          res.status(200).json(joke);
+        })
+        .catch(function (error) {
+          next(error);
+        });
+    }).catch(function (error) {
       next(error);
     });
 });
