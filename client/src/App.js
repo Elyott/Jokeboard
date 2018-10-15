@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom'
 import './styles/App.scss';
 
 import NavBar from './NavBar';
-import JokeBook from './JokeBook';
+import Jokes from './JokeBook';
+import NewJoke from './NewJoke'
 
 
 class App extends Component {
@@ -11,7 +13,10 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <JokeBook />
+        <Switch>
+          <Route path='/jokes' component={Jokes}/>
+          <Route path='/newjoke' component={NewJoke}/>
+        </Switch>
       </div>
     );
   }
