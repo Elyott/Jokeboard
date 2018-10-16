@@ -11,11 +11,17 @@ class JokeDetail extends Component {
   }
 
 
-  onInputChange = (e) => {
-    this.setState({ jokeContent: e.target.value });
-  }
+  // onInputChange = (e) => {
+  //   this.setState({ jokeContent: e.target.value });
+  // }
 
   render() {
+    const { joke } = this.props;
+
+    if (!joke) {
+      return <div className="row">Please Select A Joke</div>
+    }
+
     return <div className="joke_detail item">
         {/* <div className='joke_detail_title' >Joke</div> */}
         <div className="row">
@@ -24,16 +30,11 @@ class JokeDetail extends Component {
           <div className="col">Rating</div>
         </div>
         <div className="row">
-          <div className="col">{this.props.joke && this.props.joke.name}</div>
-          <div className="col">{this.props.joke && this.props.joke.minutes}:{this.props.joke && this.props.joke.seconds} </div>
-          <div className="col">{this.props.joke && this.props.joke.rating}</div>
+          <div className="col">{joke.name}</div>
+          <div className="col">{joke.minutes}:{joke.seconds} </div>
+          <div className="col">{joke.rating}</div>
         </div>
-        <div>{this.props.joke && this.props.joke.content}</div>
-        {/* <div>Title: {this.props.joke && this.props.joke.title}</div>
-        <div>Duration: {this.props.joke && this.props.joke.duration}</div>
-        <div>Rating: {this.props.joke && this.props.joke.rating}</div>
-        <div>{this.props.joke && this.props.joke.content}</div> */}
-      {/* <input id='joke_content' onChange={this.onInputChange} value={this.state.jokeContent}/> */}
+        <div>{joke.content}</div>
       </div>;
   }
 }
