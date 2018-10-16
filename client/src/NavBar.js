@@ -5,7 +5,7 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar">
-        <Link to='/' className="navbar-brand">JOKERNAUT</Link>
+        <Link to='/' className="navbar-brand">JOKEBOOK</Link>
         <div className="buttons">
           <div className="nav_button">
             <Link to='/newjoke'>New Joke</Link>
