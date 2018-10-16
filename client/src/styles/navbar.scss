@@ -3,18 +3,18 @@ a {
 }
 .navbar {
   border: none;
-  background: white;
+  background: #35a094;
   left: 0;
   padding-left: 20px;
   position: fixed;
   right: 0;
   top: 0;
   margin-bottom: 20px;
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 2px solid #2d9185;
 }
 
 .navbar-brand {
-  color: #35a094;
+  color: white;
   display: block;
   float: left;
   font-weight: 900;
@@ -26,11 +26,11 @@ a {
 }
 
 .navbar-brand:hover {
-  color: #2d9185;
+  color: #d7f3f0;
 }
 
 .nav_button {
-  color: #35a094;
+  color: white;
   display: block;
   float: right;
   font-weight: 900;
@@ -42,6 +42,6 @@ a {
 }
 
 .nav_button:hover {
-  color: #2d9185;
-  background: #f1f1f1;
+  // color: #c3ece8;
+  background: #2d9185;
 }
