@@ -5,13 +5,25 @@
   background-color: white;
   margin: auto;
   margin-top: 15vh;
-  padding: 2vh 3vw;
+  padding: 1vh 3vw;
   // border: 2px solid lightgrey;
-  text-align: center;
+  // text-align: center;
   border-radius: 1vh;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
+  .newjoke_title{
+    text-align: center;
+    padding: 1.4vh;
+    font-weight: 900;
+    font-size: 1.2em;
+  }
+
   .cancel {
     margin-left: 10px;
+  }
+
+  .text-danger {
+    font-size: 14px;
+    padding: 2px;
   }
 }
