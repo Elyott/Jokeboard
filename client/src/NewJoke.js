@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 class NewJoke extends Component {
 
@@ -10,23 +11,36 @@ class NewJoke extends Component {
     type,
     meta: { touched, error, warning }
   }) => (
-      <div>
+      <div className="form-group">
         <label>{label}</label>
         <div>
-          <input {...input} placeholder={placeholder} type={type} />
-          {touched &&
-            ((error && <span>{error}</span>) ||
-              (warning && <span>{warning}</span>))}
+          <input
+            {...input}
+            className="form-control"
+            placeholder={placeholder}
+            type={type}
+          />
+          <div className="text-danger">
+            {touched &&
+              ((error && <span>{error}</span>) ||
+                (warning && <span>{warning}</span>))}
+          </div>
         </div>
       </div>
     )
 
+  onSubmit = (values) => {
+    console.log(values);
+  }
+
   render(){
+    const { handleSubmit } = this.props;
+
     return (
       <div className="jokebook_container">
         <div className="form-group">
           Add A New Joke
-          <form>
+          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field
                   label="Joke Name"
                   name="name"
@@ -79,14 +93,12 @@ class NewJoke extends Component {
                 />
               </div>
             </div>
-            {/* <div>
-              <button type="submit" disabled={pristine || submitting}>
-                Submit
+            <div>
+              <button type="submit" className="btn btn-primary">
+                Save
               </button>
-              <button type="button" disabled={pristine || submitting} onClick={reset}>
-                Clear Values
-              </button>
-            </div> */}
+              <Link to="/" className="btn btn-danger">Cancel</Link>
+            </div>
           </form>
         </div>
       </div>
@@ -97,7 +109,17 @@ class NewJoke extends Component {
 function validate(values) {
   const errors = {};
 
+  if (!values.name) {
+    errors.name = "Enter a Name!";
+  }
 
+  if (!values.rating) {
+    errors.rating = "Enter a Rating!";
+  }
+
+  if (!values.content) {
+    errors.content = "Enter a Joke!"
+  }
 
   return errors;
 }
