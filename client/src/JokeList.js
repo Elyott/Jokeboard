@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import JokeItem from './JokeItem';
 import { fetchJokes } from './actions/index';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 
 class JokeList extends Component {
