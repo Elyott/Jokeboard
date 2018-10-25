@@ -9,17 +9,27 @@ class NewJoke extends Component {
     label,
     placeholder,
     type,
+    className,
     meta: { touched, error, warning }
   }) => (
-      <div className="form-group">
-        <label>{label}</label>
+      <div className={`form-group ${className}`}>
+        {label && <label>{label}</label>}
         <div>
-          <input
-            {...input}
-            className="form-control"
-            placeholder={placeholder}
-            type={type}
-          />
+          {type === "textarea" ?
+            <textarea
+              {...input}
+              className="form-control"
+              placeholder={placeholder}
+              type={type}
+            />
+            :
+            <input
+              {...input}
+              className="form-control"
+              placeholder={placeholder}
+              type={type}
+            />
+          }
           <div className="text-danger">
             {touched &&
               ((error && <span>{error}</span>) ||
@@ -39,56 +49,62 @@ class NewJoke extends Component {
     return (
       <div className="newjoke_container">
         <div className="form-group">
-          Add A New Joke
+          <div className="newjoke_title">Create A New Joke</div>
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className="form-row">
                 <Field
                   label="Joke Name"
                   name="name"
                   component={this.renderField}
                   type="text"
                   placeholder="Name of the Joke"
+                  className="col-6"
                 />
-            <div>
+              <div className="form-group col-sm-2">
+                <label>Rating</label>
+                <div>
+                  <Field name="rating" component="select" type="select" className="form-control">
+                    <option />
+                    <option value="A+">A+</option>
+                    <option value="A">A</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B">B</option>
+                    <option value="B-">B-</option>
+                    <option value="C+">C+</option>
+                    <option value="C">C</option>
+                    <option value="C-">C-</option>
+                    <option value="F">F</option>
+                  </Field>
+                </div>
+              </div>
+            <div className="col">
+            <label>Duration</label>
+            <div className="form-row">
                 <Field
-                  label="Duration"
                   name="minutes"
                   component={this.renderField}
                   type="text"
                   placeholder="Minutes"
+                  className="col"
                 />
-                :
                 <Field
-                  label=""
                   name="seconds"
                   component={this.renderField}
                   type="text"
                   placeholder="Seconds"
+                  className="col"
                 />
             </div>
-            <div>
-              <label>Rating</label>
-              <div>
-                <Field name="rating" component="select">
-                  <option />
-                  <option value="A+">A+</option>
-                  <option value="A">A</option>
-                  <option value="A-">A-</option>
-                  <option value="B+">B+</option>
-                  <option value="B">B</option>
-                  <option value="B-">B-</option>
-                  <option value="C+">C+</option>
-                  <option value="C">C</option>
-                  <option value="C-">C-</option>
-                  <option value="F">F</option>
-                </Field>
-              </div>
             </div>
+</div>
             <div>
               <label>Content</label>
               <div>
                 <Field
                   name="content"
-                  component="textarea"
+                  component={this.renderField}
+                  type="textarea"
                   placeholder="Write your joke here..."
                 />
               </div>
