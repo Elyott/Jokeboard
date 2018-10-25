@@ -37,7 +37,7 @@ class NewJoke extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="jokebook_container">
+      <div className="newjoke_container">
         <div className="form-group">
           Add A New Joke
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -97,7 +97,7 @@ class NewJoke extends Component {
               <button type="submit" className="btn btn-primary">
                 Save
               </button>
-              <Link to="/" className="btn btn-danger">Cancel</Link>
+              <Link to="/" className="cancel btn btn-danger">Cancel</Link>
             </div>
           </form>
         </div>
