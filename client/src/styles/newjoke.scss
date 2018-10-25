@@ -1,0 +1,17 @@
+.newjoke_container {
+  position: relative;
+  width: 60vw;
+  min-height: 60vh;
+  background-color: white;
+  margin: auto;
+  margin-top: 15vh;
+  padding: 2vh 3vw;
+  // border: 2px solid lightgrey;
+  text-align: center;
+  border-radius: 1vh;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+  .cancel {
+    margin-left: 10px;
+  }
+}
