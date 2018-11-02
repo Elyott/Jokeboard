@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createJoke } from './actions';
 
 class NewJoke extends Component {
 
@@ -40,7 +42,11 @@ class NewJoke extends Component {
     )
 
   onSubmit = (values) => {
-    console.log(values);
+    // values["minutes"] = Number(values["minutes"]);
+    // values["seconds"] = Number(values["seconds"]);
+    values["user_id"] = 2;
+    // console.log(values);
+    this.props.createJoke(values);
   }
 
   render(){
@@ -78,26 +84,26 @@ class NewJoke extends Component {
                   </Field>
                 </div>
               </div>
-            <div className="col">
-            <label>Duration</label>
-            <div className="form-row">
-                <Field
-                  name="minutes"
-                  component={this.renderField}
-                  type="text"
-                  placeholder="Minutes"
-                  className="col"
-                />
-                <Field
-                  name="seconds"
-                  component={this.renderField}
-                  type="text"
-                  placeholder="Seconds"
-                  className="col"
-                />
+              <div className="col">
+                <label>Duration</label>
+                <div className="form-row">
+                    <Field
+                      name="minutes"
+                      component={this.renderField}
+                      type="text"
+                      placeholder="Minutes"
+                      className="col"
+                    />
+                    <Field
+                      name="seconds"
+                      component={this.renderField}
+                      type="text"
+                      placeholder="Seconds"
+                      className="col"
+                    />
+                </div>
+              </div>
             </div>
-            </div>
-</div>
             <div>
               <label>Content</label>
               <div>
@@ -143,4 +149,6 @@ function validate(values) {
 export default reduxForm({
   form: 'NewJokeForm',
   validate
-})(NewJoke);
+})(
+  connect(null,{ createJoke })(NewJoke)
+);
