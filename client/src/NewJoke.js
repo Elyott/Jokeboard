@@ -42,10 +42,7 @@ class NewJoke extends Component {
     )
 
   onSubmit = (values) => {
-    // values["minutes"] = Number(values["minutes"]);
-    // values["seconds"] = Number(values["seconds"]);
     values["user_id"] = 2;
-    // console.log(values);
     this.props.createJoke(values);
   }
 
