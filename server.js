@@ -1,23 +1,33 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 5000;
 const routes = require('./routes');
 
-const { Client } = require('pg');
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-});
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
-client.connect();
+// parse application/json
+app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// const { Client } = require('pg');
+
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: true,
+// });
+
+// client.connect();
+
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
