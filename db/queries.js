@@ -27,9 +27,9 @@ function deleteJoke(jokeID) {
 }
 
 module.exports = {
-  getAll: getAll,
-  getSingle: getSingle,
-  addJoke: addJoke,
-  updateJoke: updateJoke,
-  deleteJoke: deleteJoke
+  getAll,
+  getSingle,
+  addJoke,
+  updateJoke,
+  deleteJoke
 };
