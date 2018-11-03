@@ -58,10 +58,13 @@
     color: #35a094;
     font-weight: 900;
     font-size: 1.1em;
-    height: 60px;
+    height: 50px;
+    line-height: 50px;
     text-decoration: none;
     width: 100%;
     border-radius: 0;
+    border-bottom-left-radius: 1vh;
+    border-bottom-right-radius: 1vh;
  }
 
  .add_joke_btn:hover {
@@ -71,6 +74,7 @@
 }
 
 .joke_detail {
+  position: relative;
   margin-left: 10px;
   width: 70%;
   padding: 1vh;
@@ -87,6 +91,24 @@
 
   .col {
     width: 30%;
+  }
+
+  .delete_button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 22px;
+    padding: .2rem .65rem;
+  }
+
+  .delete_button:hover {
+    background-color: #da2727;
+    color: white;
+  }
+
+  .delete_button:focus {
+    background-color: #9c1b1b;
+    color: white;
   }
 }
 

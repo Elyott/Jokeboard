@@ -43,7 +43,9 @@ class NewJoke extends Component {
 
   onSubmit = (values) => {
     values["user_id"] = 2;
-    this.props.createJoke(values);
+    this.props.createJoke(values, () => {
+      this.props.history.push('/jokes');
+    });
   }
 
   render(){
@@ -116,7 +118,7 @@ class NewJoke extends Component {
               <button type="submit" className="btn btn-primary">
                 Save
               </button>
-              <Link to="/" className="cancel btn btn-danger">Cancel</Link>
+              <Link to="/jokes" className="cancel btn btn-danger">Cancel</Link>
             </div>
           </form>
         </div>

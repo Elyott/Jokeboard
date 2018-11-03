@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { deleteJoke } from './actions';
 
 class JokeDetail extends Component {
   constructor() {
@@ -14,6 +15,12 @@ class JokeDetail extends Component {
   // onInputChange = (e) => {
   //   this.setState({ jokeContent: e.target.value });
   // }
+
+  onDeleteClick() {
+    this.props.deleteJoke(this.props.joke.id, () => {
+      this.props.history.push('/jokes');
+    });
+  }
 
   render() {
     const { joke } = this.props;
@@ -35,6 +42,12 @@ class JokeDetail extends Component {
           <div className="col">{joke.rating}</div>
         </div>
         <div>{joke.content}</div>
+        <button
+          className="btn delete_button"
+          onClick={this.onDeleteClick.bind(this)}
+        >
+          <i className="fa fa-trash"></i>
+        </button>
       </div>;
   }
 }
@@ -45,4 +58,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(JokeDetail);
+export default connect(mapStateToProps, {deleteJoke})(JokeDetail);
