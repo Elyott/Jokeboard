@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import JokeItem from './JokeItem';
-import { fetchJokes } from './actions/index';
-// import { bindActionCreators } from 'redux';
+import { fetchJokes } from './actions';
 import _ from 'lodash';
 
 class JokeList extends Component {
-    constructor() {
-    super();
-
-    this.state = { response: [] };
-  }
 
   componentDidMount() {
     this.props.fetchJokes();
@@ -40,11 +34,5 @@ const mapStateToProps = state => {
   }
 }
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({
-//       fetchJokes
-//     },
-//     dispatch
-//   );
 
 export default connect(mapStateToProps, { fetchJokes })(JokeList);
