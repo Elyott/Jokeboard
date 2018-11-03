@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createJoke } from './actions';
+import { createJoke, selectJoke } from './actions';
 
 class NewJoke extends Component {
 
@@ -43,7 +43,8 @@ class NewJoke extends Component {
 
   onSubmit = (values) => {
     values["user_id"] = 2;
-    this.props.createJoke(values, () => {
+    this.props.createJoke(values, (joke) => {
+      this.props.selectJoke(joke);
       this.props.history.push('/jokes');
     });
   }
@@ -149,5 +150,5 @@ export default reduxForm({
   form: 'NewJokeForm',
   validate
 })(
-  connect(null,{ createJoke })(NewJoke)
+  connect(null,{ createJoke, selectJoke })(NewJoke)
 );
