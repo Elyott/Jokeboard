@@ -26,10 +26,11 @@ export function fetchJokes(){
 export function createJoke(values, callback) {
   const request = axios.post('/api/jokes', values).then(function (response) {
       console.log(response);
+      return response.data
     })
     .catch(function (error) {
       console.log(error);
-    }).then(() => callback());
+    }).then(result => callback(result));
 
   return {
     type: CREATE_JOKE,
