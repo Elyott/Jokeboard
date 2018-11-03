@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteJoke } from './actions';
+import { selectJoke, deleteJoke } from './actions';
+
 
 class JokeDetail extends Component {
-  constructor() {
-    super();
 
-    this.state = {
-      jokeContent: '',
-    }
-  }
-
-
-  // onInputChange = (e) => {
-  //   this.setState({ jokeContent: e.target.value });
-  // }
 
   onDeleteClick() {
     this.props.deleteJoke(this.props.joke.id, () => {
+      this.props.selectJoke(null);
       this.props.history.push('/jokes');
     });
   }
@@ -58,4 +49,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {deleteJoke})(JokeDetail);
+export default connect(mapStateToProps, {deleteJoke, selectJoke})(JokeDetail);
