@@ -9,7 +9,9 @@ const ratingOptions = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "F"]
 class JokeForm extends Component {
 
     componentDidMount() {
-      this.handleInitialize();
+      if (this.props.updateJoke) {
+        this.handleInitialize();
+      }
     }
 
     handleInitialize() {

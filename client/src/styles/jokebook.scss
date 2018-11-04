@@ -1,13 +1,15 @@
+.main {
+  width: 80%;
+  margin: auto;
+}
+
 .jokebook_container {
   position:relative;
   width: 60vw;
   min-height: 60vh;
   background-color: white;
-  margin: auto;
-  margin-top: 15vh;
-  padding-bottom: 60px;
-  // padding: 2vh;
-  // border: 2px solid lightgrey;
+  margin-top: 5vh;
+  border: 1px solid #e0e0e0;
   text-align: center;
   border-radius: 1vh;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
@@ -23,54 +25,6 @@
     display: flex;
   }
 
-  .jokeitems {
-    width: 30%;
-    min-height: 30vh;
-  }
-
-  .joke {
-    // display: block;
-    min-height: 45px;
-    // text-align: left;
-    padding: 1vh 4vh;
-    color: #c04c4c;
-
-    .joke_name {
-      float: center;
-    }
-    .edit {
-      display: none;
-      float: right;
-    }
-  }
-  .joke:hover {
-    background-color: #f1f1f1;
-
-    .edit{
-      display: initial;
-    }
-  }
-
- .add_joke_btn {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    color: #35a094;
-    font-weight: 900;
-    font-size: 1.1em;
-    height: 50px;
-    line-height: 50px;
-    text-decoration: none;
-    width: 100%;
-    border-radius: 0;
-    border-bottom-left-radius: 1vh;
-    border-bottom-right-radius: 1vh;
- }
-
- .add_joke_btn:hover {
-   color: #2d9185;
-   background: #f1f1f1;
- }
 }
 
 .joke_detail {
@@ -94,9 +48,9 @@
     padding: 0;
   }
 
-  .select_joke {
+  .select {
+    width: 100%;
     text-align: center;
-    vertical-align: middle;
   }
 
   .delete_button {
@@ -140,4 +94,73 @@
   width: 80%;
   margin: auto;
   min-height: 40px;
+}
+
+.joke_container {
+  position: relative;
+  width: 18vw;
+  background-color: white;
+  margin: auto;
+  margin-top: 5vh;
+  padding-bottom: 50px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  border-radius: 1vh;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+
+
+  .title {
+    border-radius: 1vh 1vh 0 0;
+    background: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1vh 4vh;
+    height: 45px;
+  }
+
+  .jokeitems {
+    // width: 30%;
+    min-height: 30vh;
+  }
+
+  .joke {
+    // display: block;
+    min-height: 45px;
+    // text-align: left;
+    padding: 1vh 4vh;
+    color: #c04c4c;
+    cursor: pointer;
+
+    .joke_name {
+      float: center;
+    }
+  }
+  .joke:hover {
+    background-color: #f1f1f1;
+  }
+
+  .add_joke_btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #35a094;
+    font-weight: 900;
+    height: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    width: 100%;
+    border-radius: 0 0 1vh 1vh;
+    border-top: 1px solid #f1f1f1;
+    background: #f8f8f8;
+  }
+
+  .add_joke_btn:hover {
+    color: #2d9185;
+    background: #f1f1f1;
+    border-top: 1px solid #e0e0e0;
+  }
+}
+
+.joke_list {
+  height: 54vh;
+  overflow: scroll;
 }
