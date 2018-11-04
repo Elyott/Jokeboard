@@ -13,17 +13,22 @@ class UpdateJoke extends Component {
     });
   }
 
-
   render(){
     return (
       <div className="newjoke_container">
         <div className="form-group">
           <div className="newjoke_title">Update Joke</div>
-          <JokeForm onSubmit={this.onSubmit}/>
+          <JokeForm onSubmit={this.onSubmit} updateJoke={this.props.joke}/>
         </div>
       </div>
     );
   }
 }
 
-export default connect(null,{ updateJoke, selectJoke })(UpdateJoke);
+const mapStateToProps = state => {
+  return {
+    joke: state.activeJoke
+  };
+};
+
+export default connect(mapStateToProps,{ updateJoke, selectJoke })(UpdateJoke);
