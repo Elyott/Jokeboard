@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createJoke, selectJoke } from './actions';
 
 const ratingOptions = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "F"]
 
-class NewJoke extends Component {
+class JokeForm extends Component {
 
   renderField = ({
     input,
@@ -57,21 +55,12 @@ class NewJoke extends Component {
    </div>
   );
 
-
-  onSubmit = (values) => {
-    values["user_id"] = 2;
-    this.props.createJoke(values, (joke) => {
-      this.props.selectJoke(joke);
-      this.props.history.push('/jokes');
-    });
-  }
-
   render(){
     const { handleSubmit } = this.props;
 
     return (
       <div>
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form onSubmit={handleSubmit(this.props.onSubmit.bind(this))}>
           <div className="form-row">
             <Field
               label="Joke Name"
@@ -171,6 +160,4 @@ function validate(values) {
 export default reduxForm({
   form: 'NewJokeForm',
   validate
-})(
-  connect(null,{ createJoke, selectJoke })(NewJoke)
-);
+})(JokeForm);
