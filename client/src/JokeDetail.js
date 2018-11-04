@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectJoke, deleteJoke } from './actions';
-
+import { Link } from 'react-router-dom';
 
 class JokeDetail extends Component {
 
@@ -39,6 +39,7 @@ class JokeDetail extends Component {
         >
           <i className="fa fa-trash"></i>
         </button>
+        <Link to="/updatejoke" className="btn edit_button"><i className="fa fa-edit"></i></Link>
       </div>;
   }
 }

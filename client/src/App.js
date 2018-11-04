@@ -8,7 +8,6 @@ import NewJoke from './NewJoke';
 import UpdateJoke from './UpdateJoke';
 
 
-
 class App extends Component {
 
   render() {
