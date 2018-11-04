@@ -17,7 +17,7 @@ class JokeDetail extends Component {
     const { joke } = this.props;
 
     if (!joke) {
-      return <div className="row">Please Select A Joke</div>
+      return <div className="select">Please Select A Joke</div>
     }
 
     return <div className="joke_detail item">
@@ -32,7 +32,9 @@ class JokeDetail extends Component {
           <div className="col">{joke.minutes}:{joke.seconds} </div>
           <div className="col">{joke.rating}</div>
         </div>
-        <div>{joke.content}</div>
+        <div className="row">
+        <div className="col">{joke.content}</div>
+        </div>
         <button
           className="btn delete_button"
           onClick={this.onDeleteClick.bind(this)}
