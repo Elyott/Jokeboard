@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { request } from 'http';
 
 export const JOKE_SELECTED = 'JOKE_SELECTED';
 export const FETCH_JOKES = 'FETCH_JOKES';
@@ -26,7 +25,8 @@ export function fetchJokes(){
 }
 
 export function createJoke(values, callback) {
-  const request = axios.post('/api/jokes', values).then(function (response) {
+  const request = axios.post('/api/jokes', values)
+    .then(function (response) {
       console.log(response);
       return response.data
     })
@@ -61,7 +61,13 @@ export function deleteJoke(id, callback) {
 
 export function updateJoke(values, callback) {
   const request = axios.put(`/api/jokes/${values.id}`, values)
-    .then(() => callback());
+    .then(function (response) {
+      console.log(response);
+      return response.data
+    })
+    .catch(function (error) {
+      console.log(error);
+    }).then(result => callback(result));
 
   return {
     type: UPDATE_JOKE,
