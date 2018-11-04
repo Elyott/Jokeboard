@@ -13,7 +13,7 @@ export function validate(values) {
     errors.content = "Enter a Joke!";
   }
 
-  if (values.seconds < "0" || values.seconds > "60") {
+  if (values.seconds < 0 || values.seconds > 60) {
     errors.seconds = "Must be a number between 0 and 60!";
   }
 

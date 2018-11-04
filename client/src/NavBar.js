@@ -7,12 +7,9 @@ class NavBar extends Component {
       <nav className="navbar">
         <Link to='/' className="navbar-brand">JOKEBOOK</Link>
         <div className="buttons">
-          <div className="nav_button">
-            <Link to='/newjoke'>New Joke</Link>
-          </div>
-          <div className="nav_button">
-            <Link to='/jokes'>Jokes</Link>
-          </div>
+            <Link to='/newjoke' className="nav_button">New Joke</Link>
+            <Link to='/setlists' className="nav_button">Setlists</Link>
+            <Link to='/jokes' className="nav_button">Jokes</Link>
         </div>
       </nav>
     );
