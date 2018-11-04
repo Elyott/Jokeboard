@@ -8,6 +8,17 @@ const ratingOptions = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "F"]
 
 class JokeForm extends Component {
 
+    componentDidMount() {
+      this.handleInitialize();
+    }
+
+    handleInitialize() {
+      const joke = this.props.updateJoke
+      console.log(joke)
+      this.props.initialize(joke);
+    }
+
+
   renderField = ({
     input,
     label,
