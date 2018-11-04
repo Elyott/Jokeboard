@@ -21,8 +21,10 @@ class JokeList extends Component {
   render() {
     return(
       <div className='jokeitems item'>
-        <div>Jokes</div>
-        {this.renderJokeList()}
+        <div className="title">Jokes</div>
+        <div className="joke_list">
+          {this.renderJokeList()}
+        </div>
       </div>
     );
   }
