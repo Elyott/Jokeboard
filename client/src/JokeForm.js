@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createJoke, selectJoke } from './actions';
+
+import { validate } from './Joke_form_validation';
 
 const ratingOptions = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "F"]
 
-class NewJoke extends Component {
+class JokeForm extends Component {
+
+    componentDidMount() {
+      this.handleInitialize();
+    }
+
+    handleInitialize() {
+      const joke = this.props.updateJoke
+      console.log(joke)
+      this.props.initialize(joke);
+    }
+
 
   renderField = ({
     input,
@@ -57,21 +68,12 @@ class NewJoke extends Component {
    </div>
   );
 
-
-  onSubmit = (values) => {
-    values["user_id"] = 2;
-    this.props.createJoke(values, (joke) => {
-      this.props.selectJoke(joke);
-      this.props.history.push('/jokes');
-    });
-  }
-
   render(){
     const { handleSubmit } = this.props;
 
     return (
       <div>
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form onSubmit={handleSubmit(this.props.onSubmit.bind(this))}>
           <div className="form-row">
             <Field
               label="Joke Name"
@@ -125,52 +127,9 @@ class NewJoke extends Component {
   }
 }
 
-function validate(values) {
-  const errors = {};
 
-  if (!values.name) {
-    errors.name = "Enter a Name!";
-  }
-
-  if (!values.rating) {
-    errors.rating = "Enter a Rating!";
-  }
-
-  if (!values.content) {
-    errors.content = "Enter a Joke!";
-  }
-
-  if (values.seconds < "0" || values.seconds > "60") {
-    errors.seconds = "Must be a number between 0 and 60!";
-  }
-
-  if (isNaN(values.minutes)) {
-    errors.minutes = "Please Enter a Number!";
-  }
-
-  if (isNaN(values.seconds)) {
-    errors.seconds = "Please Enter a Number!";
-  }
-
-  if (!values.minutes && values.seconds) {
-    errors.minutes = "";
-  }
-
-  if (values.minutes && !values.seconds) {
-    errors.seconds = "";
-  }
-
-  if ((!values.minutes && !values.seconds) || (!values.minutes && values.seconds === "0")) {
-    errors.seconds = "Enter a Duration!";
-    errors.minutes = "";
-  }
-
-  return errors;
-}
 
 export default reduxForm({
   form: 'NewJokeForm',
   validate
-})(
-  connect(null,{ createJoke, selectJoke })(NewJoke)
-);
+})(JokeForm);

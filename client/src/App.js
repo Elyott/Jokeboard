@@ -4,7 +4,8 @@ import './styles/App.scss';
 
 import NavBar from './NavBar';
 import Jokes from './JokeBook';
-import NewJoke from './NewJoke'
+import NewJoke from './NewJoke';
+import UpdateJoke from './UpdateJoke';
 
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
         <Switch>
           <Route path='/jokes' component={Jokes}/>
           <Route path='/newjoke' component={NewJoke}/>
+          <Route path='/updatejoke' component={UpdateJoke}/>
         </Switch>
       </div>
     );
