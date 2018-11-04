@@ -13,7 +13,7 @@ class JokeList extends Component {
   renderJokeList() {
     return _.map(this.props.jokes, joke => {
       return (<JokeItem
-        key={joke.name}
+        key={joke.id}
         joke={joke} /> )
     })
   }
