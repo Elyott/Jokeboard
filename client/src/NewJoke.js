@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createJoke, selectJoke } from './actions';
 
+const ratingOptions = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "F"]
+
 class NewJoke extends Component {
 
   renderField = ({
@@ -16,7 +18,6 @@ class NewJoke extends Component {
   }) => (
       <div className={`form-group ${className}`}>
         {label && <label>{label}</label>}
-        <div>
           {type === "textarea" ?
             <textarea
               {...input}
@@ -32,14 +33,30 @@ class NewJoke extends Component {
               type={type}
             />
           }
-          <div className="text-danger">
-            {touched &&
-              ((error && <span>{error}</span>) ||
-                (warning && <span>{warning}</span>))}
-          </div>
-        </div>
+          {touched && error && <div className="text-danger">{error}</div>}
       </div>
-    )
+  );
+
+  renderSelect = ({
+    input,
+    label,
+    placeholder,
+    type,
+    className,
+    meta: { touched, error, warning }
+  }) => (
+    <div className={"form-group col-sm-2"}>
+      <label>{label}</label>
+      <select {...input}
+        className="form-control"
+      >
+        <option value="">Rate</option>
+        {ratingOptions.map(val => <option value={val} key={val}>{val}</option>)}
+      </select>
+      {touched && error && <div className="text-danger">{error}</div>}
+   </div>
+  );
+
 
   onSubmit = (values) => {
     values["user_id"] = 2;
@@ -58,32 +75,15 @@ class NewJoke extends Component {
           <div className="newjoke_title">Create A New Joke</div>
           <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
             <div className="form-row">
-                <Field
-                  label="Joke Name"
-                  name="name"
-                  component={this.renderField}
-                  type="text"
-                  placeholder="Name of the Joke"
-                  className="col-6"
-                />
-              <div className="form-group col-sm-2">
-                <label>Rating</label>
-                <div>
-                  <Field name="rating" component="select" type="select" className="form-control">
-                    <option />
-                    <option value="A+">A+</option>
-                    <option value="A">A</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B">B</option>
-                    <option value="B-">B-</option>
-                    <option value="C+">C+</option>
-                    <option value="C">C</option>
-                    <option value="C-">C-</option>
-                    <option value="F">F</option>
-                  </Field>
-                </div>
-              </div>
+              <Field
+                label="Joke Name"
+                name="name"
+                component={this.renderField}
+                type="text"
+                placeholder="Name of the Joke"
+                className="col-6"
+              />
+              <Field name="rating" component={this.renderSelect} label="Rating" />
               <div className="col">
                 <label>Duration</label>
                 <div className="form-row">
@@ -140,7 +140,32 @@ function validate(values) {
   }
 
   if (!values.content) {
-    errors.content = "Enter a Joke!"
+    errors.content = "Enter a Joke!";
+  }
+
+  if (values.seconds < "0" || values.seconds > "60") {
+    errors.seconds = "Must be a number between 0 and 60!";
+  }
+
+  if (isNaN(values.minutes)) {
+    errors.minutes = "Please Enter a Number!";
+  }
+
+  if (isNaN(values.seconds)) {
+    errors.seconds = "Please Enter a Number!";
+  }
+
+  if (!values.minutes && values.seconds) {
+    errors.minutes = "";
+  }
+
+  if (values.minutes && !values.seconds) {
+    errors.seconds = "";
+  }
+
+  if ((!values.minutes && !values.seconds) || (!values.minutes && values.seconds === "0")) {
+    errors.seconds = "Enter a Duration!";
+    errors.minutes = "";
   }
 
   return errors;
