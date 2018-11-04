@@ -110,6 +110,24 @@
     background-color: #9c1b1b;
     color: white;
   }
+
+  .edit_button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 22px;
+    padding: .2rem .65rem;
+  }
+
+  .edit_button:hover {
+    background-color: #35a094;
+    color: white;
+  }
+
+  .edit_button:focus {
+    background-color: #2d9185;
+    color: white;
+  }
 }
 
 #joke_content {
