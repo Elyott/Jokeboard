@@ -2,11 +2,11 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('jokes', function (table) {
     table.increments();
-    table.string('name').notNullable().unique();
+    table.string('name').notNullable();
     table.text('content').notNullable();
     table.string('rating').notNullable();
-    table.integer('minutes').notNullable();
-    table.integer('seconds').notNullable();
+    table.integer('minutes');
+    table.integer('seconds');
     table.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
