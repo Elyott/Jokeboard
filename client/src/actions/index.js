@@ -1,10 +1,12 @@
 import axios from 'axios';
+import { request } from 'http';
 
 export const JOKE_SELECTED = 'JOKE_SELECTED';
 export const FETCH_JOKES = 'FETCH_JOKES';
 export const CREATE_JOKE = 'CREATE_JOKE';
 export const FETCH_JOKE = 'FETCH_JOKE';
 export const DELETE_JOKE = 'DELETE_JOKE';
+export const UPDATE_JOKE = 'UPDATE_JOKE';
 
 export function selectJoke(joke) {
   return {
@@ -54,5 +56,15 @@ export function deleteJoke(id, callback) {
   return {
     type: DELETE_JOKE,
     payload: id
+  }
+}
+
+export function updateJoke(values, callback) {
+  const request = axios.put(`/api/jokes/${values.id}`, values)
+    .then(() => callback());
+
+  return {
+    type: UPDATE_JOKE,
+    payload: request
   }
 }
