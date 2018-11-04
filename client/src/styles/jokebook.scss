@@ -91,12 +91,18 @@
 
   .col {
     width: 30%;
+    padding: 0;
+  }
+
+  .select_joke {
+    text-align: center;
+    vertical-align: middle;
   }
 
   .delete_button {
-    position: absolute;
-    right: 0;
-    top: 0;
+    // position: absolute;
+    // right: 0;
+    // top: 0;
     font-size: 22px;
     padding: .2rem .65rem;
   }
@@ -112,9 +118,9 @@
   }
 
   .edit_button {
-    position: absolute;
-    right: 0;
-    top: 0;
+    // position: absolute;
+    // right: 0;
+    // top: 0;
     font-size: 22px;
     padding: .2rem .65rem;
   }
