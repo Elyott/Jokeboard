@@ -9,12 +9,14 @@
   min-height: 60vh;
   background-color: white;
   margin-top: 5vh;
+  padding-bottom: 45px;
   border: 1px solid #e0e0e0;
   text-align: center;
   border-radius: 1vh;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 
   .title {
+    height: 45px;
     padding-top: 1.6vh;
     font-weight: 900;
     font-size: 1.4em;
@@ -30,11 +32,13 @@
 .joke_detail {
   position: relative;
   margin-left: 10px;
-  width: 70%;
+  width: 100%;
   padding: 1vh;
   color: black;
   font-weight: 500;
   text-align: left;
+
+  // overflow: scroll;
 
   .row {
     margin: auto;
@@ -44,7 +48,10 @@
   }
 
   .col {
-    width: 30%;
+    padding: 0;
+  }
+
+  .col-8 {
     padding: 0;
   }
 
@@ -53,10 +60,20 @@
     text-align: center;
   }
 
+  .content {
+    height: 40vh;
+    overflow: scroll;
+  }
+}
+.detail_buttons {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 45px;
+  padding-right: 15px;
+}
   .delete_button {
-    // position: absolute;
-    // right: 0;
-    // top: 0;
+    margin-left: 8px;
     font-size: 22px;
     padding: .2rem .65rem;
   }
@@ -72,9 +89,6 @@
   }
 
   .edit_button {
-    // position: absolute;
-    // right: 0;
-    // top: 0;
     font-size: 22px;
     padding: .2rem .65rem;
   }
@@ -88,7 +102,6 @@
     background-color: #2d9185;
     color: white;
   }
-}
 
 #joke_content {
   width: 80%;

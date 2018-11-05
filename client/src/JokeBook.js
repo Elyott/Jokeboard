@@ -18,9 +18,7 @@ class JokeBook extends Component {
           <div className='jokebook_container col'>
             <div>
             <div className='title'>Joke Book</div>
-              <div className='container'>
                 <JokeDetail history={this.props.history}/>
-              </div>
             </div>
           </div>
         </div>
