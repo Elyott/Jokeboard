@@ -20,26 +20,32 @@ class JokeDetail extends Component {
       return <div className="select">Please Select A Joke</div>
     }
 
-    return <div className="joke_detail item">
-        <div className="row">
-          <div className="col">Title</div>
-          <div className="col">Duration</div>
-          <div className="col">Rating</div>
+    return (
+      <div className='joke_detail_container'>
+        <div className="joke_detail item">
+          <div className="row">
+            <div className="col-8">Title</div>
+            <div className="col">Duration</div>
+            <div className="col">Rating</div>
+          </div>
+          <div className="row">
+            <div className="col-8">{joke.name}</div>
+            <div className="col">{joke.minutes}:{joke.seconds} </div>
+            <div className="col">{joke.rating}</div>
+          </div>
+
+          <div className="content">{joke.content}</div>
+
         </div>
-        <div className="row">
-          <div className="col">{joke.name}</div>
-          <div className="col">{joke.minutes}:{joke.seconds} </div>
-          <div className="col">{joke.rating}</div>
+        <div className="detail_buttons">
+          <Link to="/updatejoke" className="btn edit_button"><i className="fa fa-edit"></i></Link>
+          <button type="button" className="btn delete_button" data-toggle="modal" data-target=".bd-example-modal-sm">
+            <i className="fa fa-trash"></i>
+          </button>
         </div>
-        <div className="row">
-        <div className="col">{joke.content}</div>
-        </div>
-        <button type="button" className="btn delete_button" data-toggle="modal" data-target=".bd-example-modal-sm">
-          <i className="fa fa-trash"></i>
-        </button>
         <ConfirmModal onDeleteClick={this.onDeleteClick.bind(this)} name={joke.name} jokeId={joke.id}/>
-        <Link to="/updatejoke" className="btn edit_button"><i className="fa fa-edit"></i></Link>
-      </div>;
+      </div>
+    );
   }
 }
 
