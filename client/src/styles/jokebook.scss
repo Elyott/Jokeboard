@@ -38,8 +38,6 @@
   font-weight: 500;
   text-align: left;
 
-  // overflow: scroll;
-
   .row {
     margin: auto;
     width: 100%;
@@ -130,16 +128,9 @@
     height: 45px;
   }
 
-  .jokeitems {
-    // width: 30%;
-    min-height: 30vh;
-  }
-
   .joke {
-    // display: block;
     min-height: 45px;
-    // text-align: left;
-    padding: 1vh 4vh;
+    padding: 1vh;
     color: #c04c4c;
     cursor: pointer;
 
