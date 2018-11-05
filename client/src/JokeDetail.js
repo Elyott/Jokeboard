@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectJoke, deleteJoke } from './actions';
 import { Link } from 'react-router-dom';
+import ConfirmModal from './ConfirmModal';
 
 class JokeDetail extends Component {
 
-
-  onDeleteClick() {
-    this.props.deleteJoke(this.props.joke.id, () => {
+  onDeleteClick(id) {
+    this.props.deleteJoke(id, () => {
       this.props.selectJoke(null);
       this.props.history.push('/jokes');
     });
@@ -21,7 +21,6 @@ class JokeDetail extends Component {
     }
 
     return <div className="joke_detail item">
-        {/* <div className='joke_detail_title' >Joke</div> */}
         <div className="row">
           <div className="col">Title</div>
           <div className="col">Duration</div>
@@ -35,12 +34,10 @@ class JokeDetail extends Component {
         <div className="row">
         <div className="col">{joke.content}</div>
         </div>
-        <button
-          className="btn delete_button"
-          onClick={this.onDeleteClick.bind(this)}
-        >
+        <button type="button" className="btn delete_button" data-toggle="modal" data-target=".bd-example-modal-sm">
           <i className="fa fa-trash"></i>
         </button>
+        <ConfirmModal onDeleteClick={this.onDeleteClick.bind(this)} name={joke.name} jokeId={joke.id}/>
         <Link to="/updatejoke" className="btn edit_button"><i className="fa fa-edit"></i></Link>
       </div>;
   }
