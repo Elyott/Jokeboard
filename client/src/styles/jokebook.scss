@@ -56,6 +56,7 @@
   .select {
     width: 100%;
     text-align: center;
+
   }
 
   .content {
@@ -170,4 +171,10 @@
 .joke_list {
   height: 54vh;
   overflow: scroll;
+}
+
+.select {
+  margin-top: 100px;
+  font-size: 22px;
+  color: #c04c4c;
 }
