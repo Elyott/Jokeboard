@@ -9,7 +9,7 @@
   min-height: 60vh;
   background-color: white;
   margin-top: 5vh;
-  padding-bottom: 45px;
+  padding: 1vw 2vw 45px 2vw;
   border: 1px solid #e0e0e0;
   text-align: center;
   border-radius: 1vh;
@@ -17,7 +17,7 @@
 
   .title {
     height: 45px;
-    padding-top: 1.6vh;
+    // padding-top: 1.6vh;
     font-weight: 900;
     font-size: 1.4em;
   }
@@ -31,9 +31,7 @@
 
 .joke_detail {
   position: relative;
-  margin-left: 10px;
   width: 100%;
-  padding: 1vh;
   color: black;
   font-weight: 500;
   text-align: left;
@@ -63,7 +61,7 @@
     height: 40vh;
     overflow: scroll;
     border: 1px solid #f1f1f1;
-    padding: 1vh;
+    padding: 1vw;
     border-radius: 5px;
   }
 }

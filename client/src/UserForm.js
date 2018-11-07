@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom';
 
-class Login extends Component {
+class UserForm extends Component {
 
   renderField = ({
     input,
@@ -77,4 +77,4 @@ const validate = values => {
 export default reduxForm({
   form: 'Login', // a unique identifier for this form
   validate
-})(Login)
+})(UserForm)
