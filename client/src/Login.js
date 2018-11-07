@@ -53,8 +53,8 @@ class Login extends Component {
             </button>
           </form>
         </div>
-        <div className="signup_link">Don't have an account?
-          <Link to="/signup" className="signup_link_button"> Sign Up</Link>
+        <div className="signup_link">New to Jokebook?
+          <Link to="/signup" className="signup_link_button"> Create an account</Link>
         </div>
       </div>
     );
@@ -63,6 +63,13 @@ class Login extends Component {
 
 const validate = values => {
   const errors = {}
+
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+
 
   return errors
 }
