@@ -7,7 +7,8 @@ import Jokes from './JokeBook';
 import NewJoke from './NewJoke';
 import UpdateJoke from './UpdateJoke';
 import Setlists from './Setlists';
-
+import Login from './Login';
+import SignUp from './SignUp';
 
 class App extends Component {
 
@@ -20,6 +21,8 @@ class App extends Component {
           <Route path='/newjoke' component={NewJoke}/>
           <Route path='/setlists' component={Setlists}/>
           <Route path='/updatejoke' component={UpdateJoke}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/signup' component={SignUp}/>
         </Switch>
       </div>
     );
