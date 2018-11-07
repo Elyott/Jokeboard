@@ -8,17 +8,18 @@ class Login extends Component {
     input,
     label,
     type,
-    className,
     meta: { touched, error, warning }
   }) => (
-      <div className={`form-group ${className}`}>
-        <label>{label}</label>
+      <div className={`form-group row`}>
+        <label className="col-sm-3 col-form-label">{label}</label>
+        <div className="col-sm-9">
           <input
             {...input}
             className="form-control"
             placeholder={label}
             type={type}
           />
+        </div>
           {touched && error && <div className="text-danger">{error}</div>}
       </div>
   );
@@ -31,9 +32,9 @@ class Login extends Component {
     const { handleSubmit, submitting } = this.props;
 
     return (
-      <div className="newjoke_container">
+      <div className="login_container">
         <div className="form-group">
-          <div className="newjoke_title">Login</div>
+          <div className="login_title">Login</div>
           <form onSubmit={handleSubmit(this.onSubmit)}>
             <Field
               name="email"
@@ -51,6 +52,9 @@ class Login extends Component {
               Login
             </button>
           </form>
+        </div>
+        <div className="signup_link">Don't have an account?
+          <Link to="/signup" className="signup_link_button"> Sign Up</Link>
         </div>
       </div>
     );
