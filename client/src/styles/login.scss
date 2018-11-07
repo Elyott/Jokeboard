@@ -1,6 +1,6 @@
 .login_container {
   position: relative;
-  width: 50vw;
+  width: 40vw;
   // min-height: 60vh;
   background-color: white;
   margin: auto;
@@ -19,7 +19,8 @@
   }
 
   .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 18px;
   }
 
   .btn {
@@ -30,6 +31,7 @@
     margin-top: 75px;
     text-align: center;
     font-size: 0.9em;
+    font-size: 16px;
 
     .signup_link_button {
       color: blue;
