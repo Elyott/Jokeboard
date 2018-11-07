@@ -53,9 +53,6 @@ class JokeForm extends Component {
   renderSelect = ({
     input,
     label,
-    placeholder,
-    type,
-    className,
     meta: { touched, error, warning }
   }) => (
     <div className={"form-group col-sm-2"}>
