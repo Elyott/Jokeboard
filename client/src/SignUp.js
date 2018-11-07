@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import UserForm from './UserForm';
 
 class SignUp extends Component {
+
+  onSubmit = (values) => {
+    console.log(values);
+  }
+
   render() {
     return (
       <div>
-        Sign Up
+        <UserForm
+          onSubmit={this.onSubmit}
+          title={"Sign Up"}
+          message={'Already have an account? '}
+          linkButton={'Login'}
+          linkRoute={'/login'}
+        />
       </div>
     );
   }
