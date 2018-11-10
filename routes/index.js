@@ -75,4 +75,14 @@ router.delete('/jokes/:id', function (req, res, next) {
     });
 });
 
+router.get('/users', function (req, res, next) {
+  queries.getAllUsers()
+    .then(function (users) {
+      res.status(200).json(users);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
 module.exports = router;

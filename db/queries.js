@@ -26,10 +26,15 @@ function deleteJoke(jokeID) {
   return Jokes().where('id', parseInt(jokeID)).del();
 }
 
+function getAllUsers() {
+  return knex('users').select();
+}
+
 module.exports = {
   getAll,
   getSingle,
   addJoke,
   updateJoke,
-  deleteJoke
+  deleteJoke,
+  getAllUsers
 };
