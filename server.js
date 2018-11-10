@@ -1,41 +1,37 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+
+const routeConfig = require('./config/route-config.js');
+
 const app = express();
+
+
 const port = process.env.PORT || 5000;
-const routes = require('./routes');
 
+app.use(cookieParser());
 
-// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-
-// parse application/json
 app.use(bodyParser.json());
 
-// const { Client } = require('pg');
+app.use(session({
+  secret: 'test',
+  resave: false,
+  saveUninitialized: true
+}));
 
-// const client = new Client({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: true,
-// });
-
-// client.connect();
-
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-//  Connect all our routes to our application
-app.use('/api', routes);
+routeConfig.init(app);
 
-
-// Handle React routing, return all requests to React app
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
