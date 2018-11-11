@@ -10,14 +10,12 @@ exports.seed = function(knex, Promise) {
         .then(function () {
           // Inserts seed entries
           return knex('users').insert({
-            username: 'Bob',
             password: 'Bobber',
             email: 'bob@bob.bob',
           });
         }).then(function () {
           // Inserts seed entries
           return knex('users').insert({
-            username: 'Greg',
             password: 'Gregger',
             email: 'greg@greg.greg',
           });
