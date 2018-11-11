@@ -10,13 +10,29 @@ function createUser(req) {
   const hash = bcrypt.hashSync(req.body.password, salt);
   return knex('users')
     .insert({
-      username: req.body.username,
+      email: req.body.email,
       password: hash
     })
     .returning('*');
 }
 
+function loginRequired(req, res, next) {
+  if (!req.user) return res.status(401).json({
+    status: 'Please log in'
+  });
+  return next();
+}
+
+function loginRedirect(req, res, next) {
+  if (req.user) return res.status(401).json({
+    status: 'You are already logged in'
+  });
+  return next();
+}
+
 module.exports = {
   comparePass,
-  createUser
+  createUser,
+  loginRequired,
+  loginRedirect
 };
