@@ -3,7 +3,8 @@ const router = require('express').Router();
 const authHelpers = require('../auth/_helpers');
 const passport = require('../auth/local');
 
-router.post('/register', (req, res, next) => {
+router.post('/register', authHelpers.loginRedirect, (req, res, next) => {
+  console.log(req.body)
   return authHelpers.createUser(req, res)
     .then((response) => {
       passport.authenticate('local', (err, user, info) => {
@@ -13,11 +14,12 @@ router.post('/register', (req, res, next) => {
       })(req, res, next);
     })
     .catch((err) => {
+      console.log(err)
       handleResponse(res, 500, 'error');
     });
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', authHelpers.loginRedirect, (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) { handleResponse(res, 500, 'error'); }
     if (!user) { handleResponse(res, 404, 'User not found'); }
@@ -28,6 +30,11 @@ router.post('/login', (req, res, next) => {
       });
     }
   })(req, res, next);
+});
+
+router.get('/logout', authHelpers.loginRequired, (req, res, next) => {
+  req.logout();
+  handleResponse(res, 200, 'success');
 });
 
 function handleResponse(res, code, statusMsg) {
