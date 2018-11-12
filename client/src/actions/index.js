@@ -6,6 +6,22 @@ export const CREATE_JOKE = 'CREATE_JOKE';
 export const FETCH_JOKE = 'FETCH_JOKE';
 export const DELETE_JOKE = 'DELETE_JOKE';
 export const UPDATE_JOKE = 'UPDATE_JOKE';
+export const CREATE_USER = 'CREATE_USER';
+
+export function createUser(values, callback) {
+  const request = axios.post('/auth/register', values)
+    .then(function (response) {
+      return response
+    })
+    .catch(function (error) {
+      console.log(error);
+    }).then(() => callback());
+
+  return {
+    type: CREATE_USER,
+    payload: request
+  }
+}
 
 export function selectJoke(joke) {
   return {
