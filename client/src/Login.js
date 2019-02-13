@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import UserForm from './UserForm';
+import { connect } from 'react-redux';
+import { loginUser } from './actions';
 
 class Login extends Component {
 
   onSubmit = (values) => {
-    console.log(values);
+    this.props.loginUser(values, () => {
+      this.props.history.push('/jokes');
+    });
   }
 
   render() {
@@ -23,4 +27,4 @@ class Login extends Component {
 }
 
 
-export default Login;
+export default connect(null,{ loginUser })(Login);

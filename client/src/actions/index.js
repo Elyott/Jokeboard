@@ -6,6 +6,57 @@ export const CREATE_JOKE = 'CREATE_JOKE';
 export const FETCH_JOKE = 'FETCH_JOKE';
 export const DELETE_JOKE = 'DELETE_JOKE';
 export const UPDATE_JOKE = 'UPDATE_JOKE';
+export const CREATE_USER = 'CREATE_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
+
+export function createUser(values, callback) {
+  const request = axios.post('/auth/register', values)
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    }).then(() => callback());
+
+  return {
+    type: CREATE_USER,
+    payload: request
+  }
+}
+
+export function loginUser(values, callback) {
+  const request = axios.post('/auth/login', values)
+    .then(function (response) {
+      console.log('Login: ' + response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    }).then(() => callback());
+
+  return {
+    type: LOGIN_USER,
+    payload: request
+  }
+}
+
+export function logoutUser(callback) {
+  const request = axios.get('/auth/logout')
+    .then(function (response) {
+      console.log('Logout: ' + response)
+    })
+    .catch(function (error) {
+      console.log(error);
+    }).then(() => callback());
+
+  return {
+    type: LOGOUT_USER,
+    payload: request
+  }
+}
+
+
 
 export function selectJoke(joke) {
   return {
