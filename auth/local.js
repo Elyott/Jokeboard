@@ -5,14 +5,16 @@ const init = require('./passport');
 const knex = require('../db/knex');
 const authHelpers = require('./_helpers');
 
-const options = {};
+const options = {
+  usernameField: 'email',
+  passwordField: 'password'
+};
 
 init();
 
-passport.use(new LocalStrategy(options, (email, password, done) => {
-  console.log('Email: ' + email)
+passport.use(new LocalStrategy(options, (username, password, done) => {
   // check to see if the username exists
-  knex('users').where({ email })
+  knex('users').where({ username })
     .then((user) => {
       if (!user) return done(null, false);
       if (!authHelpers.comparePass(password, user.password)) {
