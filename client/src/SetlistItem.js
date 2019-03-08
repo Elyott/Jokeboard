@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectJoke } from './actions/index';
+import { selectSetlist } from './actions/index';
 
  class SetlistItem extends Component {
   render() {
@@ -9,7 +9,7 @@ import { selectJoke } from './actions/index';
       //   <div className='joke_name'>{this.props.setlist.name}</div>
       // </div>
       <div>
-      <div className='joke'>
+      <div className='joke' onClick={() => this.props.selectSetlist(this.props.setlist)}>
         <div className='joke_name'>{this.props.setlist.name}
         </div>
       </div>
@@ -22,4 +22,4 @@ import { selectJoke } from './actions/index';
 }
 
 
-export default connect(null, {selectJoke})(SetlistItem);
+export default connect(null, {selectSetlist})(SetlistItem);
