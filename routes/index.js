@@ -35,7 +35,7 @@ router.get('/jokes/:id', function (req, res, next) {
 router.post('/jokes', function (req, res, next) {
   queries.addJoke(req.body)
     .then(function (jokeID) {
-      return queries.getSingle(jokeID);
+      return queries.getSingleJoke(jokeID);
     })
     .then(function (joke) {
       res.status(200).json(joke);
@@ -49,7 +49,7 @@ router.post('/jokes', function (req, res, next) {
 router.put('/jokes/:id', function (req, res, next) {
   queries.updateJoke(req.params.id, req.body)
     .then(function () {
-      return queries.getSingle(req.params.id);
+      return queries.getSingleJoke(req.params.id);
     })
     .then(function (joke) {
       res.status(200).json(joke);
@@ -96,6 +96,21 @@ router.get('/setlists/:id', function (req, res, next) {
       next(error);
     });
 });
+
+// *** add setlist *** //
+router.post('/setlists', function (req, res, next) {
+  queries.addSetlist(req.body)
+    .then(function (setlistID) {
+      return queries.getSingleSetlist(setlistID);
+    })
+    .then(function (setlist) {
+      res.status(200).json(setlist);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
 
 router.get('/users', function (req, res, next) {
   queries.getAllUsers()
