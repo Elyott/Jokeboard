@@ -41,7 +41,7 @@ function getSingleSetlist(setlistID) {
   return Setlists().where('id', parseInt(setlistID)).first();
 }
 
-function addSetlist(joke) {
+function addSetlist(setlist) {
   return Setlists().insert(setlist, 'id');
 }
 
