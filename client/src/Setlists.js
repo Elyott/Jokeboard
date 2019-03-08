@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSetlists } from './actions';
+import SetlistItem from './SetlistItem';
 import _ from 'lodash';
 
 class Setlists extends Component {
@@ -11,7 +12,9 @@ class Setlists extends Component {
 
   renderSetlistList() {
     return _.map(this.props.setlists, setlist => {
-      return (<div key={setlist.id}>{setlist.name}</div>)
+      return (<SetlistItem
+        key={setlist.id}
+        setlist={setlist}/>)
     })
   }
 
