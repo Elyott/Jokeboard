@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 // *** GET all jokes *** //
 router.get('/jokes', function (req, res, next) {
-  queries.getAll()
+  queries.getAllJokes()
     .then(function (jokes) {
       res.status(200).json(jokes);
     })
@@ -22,7 +22,7 @@ router.get('/jokes', function (req, res, next) {
 
 // *** GET single joke *** //
 router.get('/jokes/:id', function (req, res, next) {
-  queries.getSingle(req.params.id)
+  queries.getSingleJoke(req.params.id)
     .then(function (joke) {
       res.status(200).json(joke);
     })
@@ -71,6 +71,28 @@ router.delete('/jokes/:id', function (req, res, next) {
           next(error);
         });
     }).catch(function (error) {
+      next(error);
+    });
+});
+
+// *** GET all setlists *** //
+router.get('/setlists', function (req, res, next) {
+  queries.getAllSetlists()
+    .then(function (setlists) {
+      res.status(200).json(setlists);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** GET single setlist *** //
+router.get('/setlists/:id', function (req, res, next) {
+  queries.getSingleSetlist(req.params.id)
+    .then(function (setlist) {
+      res.status(200).json(setlist);
+    })
+    .catch(function (error) {
       next(error);
     });
 });
