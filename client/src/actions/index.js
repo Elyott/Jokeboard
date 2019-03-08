@@ -12,7 +12,7 @@ export const DELETE_JOKE = 'DELETE_JOKE';
 export const UPDATE_JOKE = 'UPDATE_JOKE';
 
 export const FETCH_SETLISTS = 'FETCH_SETLISTS';
-
+export const SETLIST_SELECTED = 'SETLIST_SELECTED';
 
 // *** user actions ***
 
@@ -130,6 +130,13 @@ export function updateJoke(values, callback) {
 }
 
 // *** setlist actions ***
+
+export function selectSetlist(setlist) {
+  return {
+    type: SETLIST_SELECTED,
+    payload: setlist
+  }
+}
 
 export function fetchSetlists() {
   const request = axios.get('/api/setlists')
