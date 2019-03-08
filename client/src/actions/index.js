@@ -1,15 +1,20 @@
 import axios from 'axios';
 
+export const CREATE_USER = 'CREATE_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
 export const JOKE_SELECTED = 'JOKE_SELECTED';
 export const FETCH_JOKES = 'FETCH_JOKES';
 export const CREATE_JOKE = 'CREATE_JOKE';
 export const FETCH_JOKE = 'FETCH_JOKE';
 export const DELETE_JOKE = 'DELETE_JOKE';
 export const UPDATE_JOKE = 'UPDATE_JOKE';
-export const CREATE_USER = 'CREATE_USER';
-export const LOGIN_USER = 'LOGIN_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
 
+export const FETCH_SETLISTS = 'FETCH_SETLISTS';
+export const SETLIST_SELECTED = 'SETLIST_SELECTED';
+
+// *** user actions ***
 
 export function createUser(values, callback) {
   const request = axios.post('/auth/register', values)
@@ -56,7 +61,7 @@ export function logoutUser(callback) {
   }
 }
 
-
+// *** joke actions ***
 
 export function selectJoke(joke) {
   return {
@@ -66,9 +71,7 @@ export function selectJoke(joke) {
 }
 
 export function fetchJokes(){
-
   const request = axios.get('/api/jokes')
-
   return {
     type: FETCH_JOKES,
     payload: request
@@ -122,6 +125,23 @@ export function updateJoke(values, callback) {
 
   return {
     type: UPDATE_JOKE,
+    payload: request
+  }
+}
+
+// *** setlist actions ***
+
+export function selectSetlist(setlist) {
+  return {
+    type: SETLIST_SELECTED,
+    payload: setlist
+  }
+}
+
+export function fetchSetlists() {
+  const request = axios.get('/api/setlists')
+  return {
+    type: FETCH_SETLISTS,
     payload: request
   }
 }

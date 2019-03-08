@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 // *** GET all jokes *** //
 router.get('/jokes', function (req, res, next) {
-  queries.getAll()
+  queries.getAllJokes()
     .then(function (jokes) {
       res.status(200).json(jokes);
     })
@@ -22,7 +22,7 @@ router.get('/jokes', function (req, res, next) {
 
 // *** GET single joke *** //
 router.get('/jokes/:id', function (req, res, next) {
-  queries.getSingle(req.params.id)
+  queries.getSingleJoke(req.params.id)
     .then(function (joke) {
       res.status(200).json(joke);
     })
@@ -35,7 +35,7 @@ router.get('/jokes/:id', function (req, res, next) {
 router.post('/jokes', function (req, res, next) {
   queries.addJoke(req.body)
     .then(function (jokeID) {
-      return queries.getSingle(jokeID);
+      return queries.getSingleJoke(jokeID);
     })
     .then(function (joke) {
       res.status(200).json(joke);
@@ -49,7 +49,7 @@ router.post('/jokes', function (req, res, next) {
 router.put('/jokes/:id', function (req, res, next) {
   queries.updateJoke(req.params.id, req.body)
     .then(function () {
-      return queries.getSingle(req.params.id);
+      return queries.getSingleJoke(req.params.id);
     })
     .then(function (joke) {
       res.status(200).json(joke);
@@ -59,13 +59,79 @@ router.put('/jokes/:id', function (req, res, next) {
     });
 });
 
-// *** delete show *** //
+// *** delete joke *** //
 router.delete('/jokes/:id', function (req, res, next) {
-  queries.getSingle(req.params.id)
+  queries.getSingleJoke(req.params.id)
     .then(function (joke) {
       queries.deleteJoke(req.params.id)
         .then(function () {
           res.status(200).json(joke);
+        })
+        .catch(function (error) {
+          next(error);
+        });
+    }).catch(function (error) {
+      next(error);
+    });
+});
+
+// *** GET all setlists *** //
+router.get('/setlists', function (req, res, next) {
+  queries.getAllSetlists()
+    .then(function (setlists) {
+      res.status(200).json(setlists);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** GET single setlist *** //
+router.get('/setlists/:id', function (req, res, next) {
+  queries.getSingleSetlist(req.params.id)
+    .then(function (setlist) {
+      res.status(200).json(setlist);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** add setlist *** //
+router.post('/setlists', function (req, res, next) {
+  queries.addSetlist(req.body)
+    .then(function (setlistID) {
+      return queries.getSingleSetlist(setlistID);
+    })
+    .then(function (setlist) {
+      res.status(200).json(setlist);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** update setlist *** //
+router.put('/setlists/:id', function (req, res, next) {
+  queries.updateSetlist(req.params.id, req.body)
+    .then(function () {
+      return queries.getSingleSetlist(req.params.id);
+    })
+    .then(function (Setlist) {
+      res.status(200).json(Setlist);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** delete setlist *** //
+router.delete('/setlists/:id', function (req, res, next) {
+  queries.getSingleSetlist(req.params.id)
+    .then(function (setlist) {
+      queries.deleteSetlist(req.params.id)
+        .then(function () {
+          res.status(200).json(setlist);
         })
         .catch(function (error) {
           next(error);
