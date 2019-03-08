@@ -59,7 +59,7 @@ router.put('/jokes/:id', function (req, res, next) {
     });
 });
 
-// *** delete show *** //
+// *** delete joke *** //
 router.delete('/jokes/:id', function (req, res, next) {
   queries.getSingle(req.params.id)
     .then(function (joke) {
@@ -105,6 +105,20 @@ router.post('/setlists', function (req, res, next) {
     })
     .then(function (setlist) {
       res.status(200).json(setlist);
+    })
+    .catch(function (error) {
+      next(error);
+    });
+});
+
+// *** update setlist *** //
+router.put('/setlists/:id', function (req, res, next) {
+  queries.updateSetlist(req.params.id, req.body)
+    .then(function () {
+      return queries.getSingleSetlist(req.params.id);
+    })
+    .then(function (Setlist) {
+      res.status(200).json(Setlist);
     })
     .catch(function (error) {
       next(error);
