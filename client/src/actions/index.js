@@ -29,7 +29,7 @@ export function createUser(values, callback) {
 export function loginUser(values, callback) {
   const request = axios.post('/auth/login', values)
     .then(function (response) {
-      console.log('Login: ' + response)
+      // console.log('Login: ' + response)
     })
     .catch(function (error) {
       console.log(error);

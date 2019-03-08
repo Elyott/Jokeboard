@@ -6,9 +6,6 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('setlists').insert({
         name: 'Tight Five',
-        joke_list: {
-          joke_ids: [ 1, 2 ]
-        },
         user_id: 1,
       });
     });
