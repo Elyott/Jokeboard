@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchSetlists } from './actions';
+import _ from 'lodash';
 
 class Setlists extends Component {
+
+  componentDidMount() {
+    this.props.fetchSetlists();
+  }
+
+  renderSetlistList() {
+    return _.map(this.props.setlists, setlist => {
+      return (<div key={setlist.id}>{setlist.name}</div>)
+    })
+  }
+
   render() {
     return (
       <div>
@@ -11,7 +25,7 @@ class Setlists extends Component {
                     <div className='jokeitems item'>
         <div className="title">Setlists</div>
         <div className="joke_list">
-          {/* {this.renderJokeList()} */}
+          {this.renderSetlistList()}
         </div>
       </div>
               {/* <Link to="/newjoke" className="add_joke_btn">New Joke  <i className="	fa fa-plus"></i></Link> */}
@@ -32,4 +46,10 @@ class Setlists extends Component {
   }
 }
 
-export default Setlists;
+const mapStateToProps = state => {
+  return {
+    setlists: state.setlists
+  }
+}
+
+export default connect(mapStateToProps, { fetchSetlists })(Setlists);
